@@ -11,63 +11,69 @@
 <body>
 
     <p>
-        <label>my_bet_______________</label>
+        <label>my_bet_________</label>
         <label>k1</label>
-        <label>___draw________________</label>
-        <label>k2</label>
-        <label>__win2__________________</label>
+        <label>___win1</label>
+        <label>draw_bet_______</label>
+        <label>__k2</label>
+        <label>__win2</label>
+        <label>bet_win3________</label>
         <label>k3</label>
+        <label>__win3</label>
     </p>
 
-    <input class="my_bet" style="width: 150px;" />
-    <input class="k" id="k11" style="color: red;width: 30px;" />
-    <input class="draw" style="width: 150px;" />
-    <input class="k" id="k22_draw" style="color: red;width: 30px;" />
-    <input class="win2" style="width: 150px;" />
-    <input class="k" id="k33" style="color: red;width: 30px;" />
+    <input class="my_bet" style="width: 110px;" />
+    <input class="k" id="k11" style="color: rgb(0, 116, 77);width: 30px;" />
+    <input class="k" id="win1" style="color: red;width: 30px;" />
+    <input class="draw_bet" style="width: 110px;" />
+    <input class="k" id="k22" style="color: rgb(0, 99, 66);width: 30px;" />
+    <input class="k" id="k222" style="color: red;width: 30px;" />
+    <input class="bet_win3" style="width: 110px;" />
+    <input class="k" id="k33" style="color: rgb(0, 161, 62);width: 30px;" />
+    <input class="k" id="k333" style="color: red;width: 30px;" />
 
     <script>
         const my_bet = document.querySelector('.my_bet');
         const draw = document.querySelector('.draw');
-        const win2 = document.querySelector('.win2');
+        const win3 = document.querySelector('.win3');
 
         const k1 = document.querySelector('#k11');
-        const k2 = document.querySelector('#k22_draw');
+        const k2 = document.querySelector('#k22');
         const k3 = document.querySelector('#k33');
 
-        var my_bet_val = 0;
-        var k1_val = 0.0;
-        var k2_val = 0.0;
-        var k3_val = 0.0;
-        var win1_val = 0;
+        var my_bet_val = Number(my_bet.value);
+        var k1_val = Number(k1.value);
+        var k2_val = Number(k2.value);
+        var k3_val = Number(k3.value);
 
         my_bet.addEventListener('input', function () {
-            if (my_bet.value == "") {
-                win1.value = "input bet";
+            if (k1_val == 0) {
+                win1.value = "emp!";
             } else {
                 my_bet_val = my_bet.value;           //вводится пользователем
                 win1_val = k1_val * my_bet_val;
+                win1.value = win1_val;
                 console.log('win1_val:', win1_val);
             }
         });
 
         k1.addEventListener('input', function () {
-            k1_val = k1.value;          //вводится пользователем
+            k1_val = Number(k1.value);          //вводится пользователем
             win1_val = k1_val * my_bet_val;
             console.log('win1_val:', win1_val);
         });
 
         k2.addEventListener('input', function () {
-            k2_val = k2.value;
+            k2_val = Number(k2.value);
             var temp = my_bet_val - k3_val;
             draw.value = temp / k2_val;
         });
 
         k3.addEventListener('input', function () {
-            k3_val = k3.value;
+            k3_val = Number(k3.value);
             // console.log('k3:', my_bet_val / k3_val);
             var temp = my_bet_val / k3_val;
-            win2.value = temp * 2;
+            win3.value = temp * 2;
         });
 
 
