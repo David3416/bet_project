@@ -22,29 +22,28 @@
         <label>__win3</label>
     </p>
 
-    <input class="my_bet" style="width: 110px;" />
+    <input class="myBet" style="width: 110px;" />
     <input class="k" id="k11" style="color: rgb(0, 116, 77);width: 30px;" />
-    <input class="k" id="win1" style="color: red;width: 30px;" />
+    <input class="k" id="win1" style="color: red;width: 30px; " readonly />
     <input class="draw_bet" style="width: 110px;" />
     <input class="k" id="k22" style="color: rgb(0, 99, 66);width: 30px;" />
-    <input class="k" id="k222" style="color: red;width: 30px;" />
+    <input class="k" id="k222" style="color: red;width: 30px;" readonly />
     <input class="bet_win3" style="width: 110px;" />
     <input class="k" id="k33" style="color: rgb(0, 161, 62);width: 30px;" />
-    <input class="k" id="k333" style="color: red;width: 30px;" />
+    <input class="k" id="k333" style="color: red;width: 30px;" readonly />
 
     <script>
-        const my_bet = document.querySelector('.my_bet');
-        const draw = document.querySelector('.draw');
-        const win3 = document.querySelector('.win3');
+        const _myBet = document.querySelector('.myBet');
+        const _draw = document.querySelector('.draw');
+        const _win3 = document.querySelector('.win3');
+        const _win1 = document.querySelector('.win1');
 
-        const k1 = document.querySelector('#k11');
-        const k2 = document.querySelector('#k22');
-        const k3 = document.querySelector('#k33');
+        const _k1 = document.querySelector('#k11');
+        const _k2 = document.querySelector('#k22');
+        const _k3 = document.querySelector('#k33');
 
-        var my_bet_val = Number(my_bet.value);
-        var k1_val = Number(k1.value);
-        var k2_val = Number(k2.value);
-        var k3_val = Number(k3.value);
+        // var my_bet_val = Number(myBet.value);
+
 
         document.querySelectorAll('input').forEach(input => {
             input.addEventListener('input', calculate);
@@ -52,45 +51,24 @@
 
 
         function calculate() {
-            const myBet = Number(my_bet.value);
-            const coef1 = Number(k1.value);
-            const coef2 = Number(k2.value);
-            const coef3 = Number(k3.value);
+            var myBet = Number(_myBet.value);
+            var draw = Number(_draw.value);
+            var win3 = Number(_win3.value);
+            var win1 = Number(_win1.value);
+            var k1 = Number(_k1.value);
+            var k2 = Number(_k2.value);
+            var k3 = Number(_k3.value);
 
-            // обновление всех полей
+            //вводится пользователем
+            win1Res = k1 * myBet;
+            // console.log('win1Res:', win1Res);
+            win1.value = win1Res;
+
+
+
         }
 
-        ///==========================================================================================
 
-        my_bet.addEventListener('input', function () {
-            if (k1_val == 0) {
-                win1.value = "emp!";
-            } else {
-                my_bet_val = my_bet.value;           //вводится пользователем
-                win1_val = k1_val * my_bet_val;
-                win1.value = win1_val;
-                console.log('win1_val:', win1_val);
-            }
-        });
-
-        k1.addEventListener('input', function () {
-            k1_val = Number(k1.value);          //вводится пользователем
-            win1_val = k1_val * my_bet_val;
-            console.log('win1_val:', win1_val);
-        });
-
-        k2.addEventListener('input', function () {
-            k2_val = Number(k2.value);
-            var temp = my_bet_val - k3_val;
-            draw.value = temp / k2_val;
-        });
-
-        k3.addEventListener('input', function () {
-            k3_val = Number(k3.value);
-            // console.log('k3:', my_bet_val / k3_val);
-            var temp = my_bet_val / k3_val;
-            win3.value = temp * 2;
-        });
 
     </script>
 </body>
