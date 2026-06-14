@@ -46,6 +46,22 @@
         var k2_val = Number(k2.value);
         var k3_val = Number(k3.value);
 
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+
+
+        function calculate() {
+            const myBet = Number(my_bet.value);
+            const coef1 = Number(k1.value);
+            const coef2 = Number(k2.value);
+            const coef3 = Number(k3.value);
+
+            // обновление всех полей
+        }
+
+        ///==========================================================================================
+
         my_bet.addEventListener('input', function () {
             if (k1_val == 0) {
                 win1.value = "emp!";
@@ -75,7 +91,6 @@
             var temp = my_bet_val / k3_val;
             win3.value = temp * 2;
         });
-
 
     </script>
 </body>
